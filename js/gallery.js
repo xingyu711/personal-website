@@ -124,7 +124,7 @@ const IMAGES = [
 function getImageHtml(imgPath, imgName, filterName) {
   return `<div class="col-lg-4 col-md-6 gallery-item ${filterName}">
             <div class="gallery-wrap">
-              <img src="${imgPath}" class="img-fluid" alt="">
+              <img src="${imgPath}" class="img-fluid" alt="${imgName}">
               <div class="gallery-info">
                 <h4>${imgName}</h4>
                 <div class="gallery-links">
