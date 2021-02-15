@@ -47,7 +47,3 @@ Design an interactive homepage showing skills, courses, projects, hobbies, etc.
 * 2 min presentation Google slides
 * 3 min video demonstration
 * Code review
-
-### Video Demonstration:
-* Link to video: 
-* Link to slides: 

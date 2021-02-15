@@ -33,19 +33,9 @@
   };
 
   /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-  /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function (e) {
+  on('click', '.mobile-nav-toggle', function () {
     select('#navbar').classList.toggle('navbar-mobile');
     this.classList.toggle('bi-list');
     this.classList.toggle('bi-x');
@@ -63,15 +53,6 @@
         e.preventDefault();
 
         let navbar = select('#navbar');
-        let header = select('#header');
-        let sections = select('section', true);
-        let navlinks = select('#navbar .nav-link', true);
-
-        navlinks.forEach((item) => {
-          item.classList.remove('active');
-        });
-
-        this.classList.add('active');
 
         if (navbar.classList.contains('navbar-mobile')) {
           navbar.classList.remove('navbar-mobile');
@@ -79,75 +60,21 @@
           navbarToggle.classList.toggle('bi-list');
           navbarToggle.classList.toggle('bi-x');
         }
-
-        if (this.hash == '#header') {
-          header.classList.remove('header-top');
-          sections.forEach((item) => {
-            item.classList.remove('section-show');
-          });
-          return;
-        }
-
-        if (!header.classList.contains('header-top')) {
-          header.classList.add('header-top');
-          setTimeout(function () {
-            sections.forEach((item) => {
-              item.classList.remove('section-show');
-            });
-            section.classList.add('section-show');
-          }, 350);
-        } else {
-          sections.forEach((item) => {
-            item.classList.remove('section-show');
-          });
-          section.classList.add('section-show');
-        }
-
-        scrollto(this.hash);
       }
     },
     true
   );
 
   /**
-   * Activate/show sections on load with hash links
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      let initial_nav = select(window.location.hash);
-
-      if (initial_nav) {
-        let header = select('#header');
-        let navlinks = select('#navbar .nav-link', true);
-
-        header.classList.add('header-top');
-
-        navlinks.forEach((item) => {
-          if (item.getAttribute('href') == window.location.hash) {
-            item.classList.add('active');
-          } else {
-            item.classList.remove('active');
-          }
-        });
-
-        setTimeout(function () {
-          initial_nav.classList.add('section-show');
-        }, 350);
-
-        scrollto(window.location.hash);
-      }
-    }
-  });
-
-  /**
    * Skills animation
    */
   let skilsContent = select('.skills-content');
   if (skilsContent) {
+    // eslint-disable-next-line no-undef
     new Waypoint({
       element: skilsContent,
       offset: '80%',
-      handler: function (direction) {
+      handler: function () {
         let progress = select('.progress .progress-bar', true);
         progress.forEach((el) => {
           el.style.width = el.getAttribute('aria-valuenow') + '%';
@@ -162,6 +89,7 @@
   window.addEventListener('load', () => {
     let galleryContainer = select('.gallery-container');
     if (galleryContainer) {
+      // eslint-disable-next-line no-undef
       let galleryIsotope = new Isotope(galleryContainer, {
         itemSelector: '.gallery-item',
         layoutMode: 'fitRows',
@@ -191,7 +119,8 @@
   /**
    * Initiate gallery lightbox
    */
-  const galleryLightbox = GLightbox({
+  // eslint-disable-next-line no-undef
+  GLightbox({
     selector: '.gallery-lightbox',
   });
 })();
